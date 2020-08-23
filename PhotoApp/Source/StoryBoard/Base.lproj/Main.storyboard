@@ -17,19 +17,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mdn-R8-4tm">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="160" height="154"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="dGe-Ke-Xxa" customClass="PhotoCell" customModule="PhotoApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KXe-GQ-9Rk">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="154"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IBb-qr-YIa">
+                                            <rect key="frame" x="20" y="10" width="120" height="134"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="au4-al-CME"/>
+                                                <constraint firstAttribute="height" constant="134" id="pOL-nB-6SH"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="IBb-qr-YIa" firstAttribute="centerX" secondItem="KXe-GQ-9Rk" secondAttribute="centerX" id="kdf-Sa-iib"/>
+                                        <constraint firstItem="IBb-qr-YIa" firstAttribute="centerY" secondItem="KXe-GQ-9Rk" secondAttribute="centerY" id="qbX-CQ-h6A"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
+                                <size key="customSize" width="160" height="154"/>
+                                <connections>
+                                    <outlet property="imageView" destination="IBb-qr-YIa" id="Fyk-oW-z5k"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

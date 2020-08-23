@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController,Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()

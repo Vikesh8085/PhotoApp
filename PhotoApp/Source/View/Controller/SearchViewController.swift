@@ -11,14 +11,25 @@ import UIKit
 class SearchViewController: UICollectionViewController {
     
     @IBOutlet weak var searchField: UITextField!
-    
-    
+    var listViewModel: SearchModelView?
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchField.delegate = self
-        self.collectionView!.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.identifier)
+        
+        self.listViewModel = SearchModelView()
+        if let viewModel = self.listViewModel {
+            viewModel.completionHandler = { (success, error) in
+                if success {
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+            viewModel.fetchFlickerPhotos()
+        }
     }
 
     
@@ -32,58 +43,7 @@ class SearchViewController: UICollectionViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 4
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell
-        cell?.backgroundColor = .red
-        return cell ?? UICollectionViewCell()
-    }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
-
 }
 
 // MARK: UITextFieldDelegate
