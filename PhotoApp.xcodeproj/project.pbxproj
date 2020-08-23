@@ -11,7 +11,6 @@
 		11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140524F253CB009B04EB /* SceneDelegate.swift */; };
 		11C2140824F253CB009B04EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140724F253CB009B04EB /* ViewController.swift */; };
 		11C2140B24F253CB009B04EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2140924F253CB009B04EB /* Main.storyboard */; };
-		11C2140E24F253CB009B04EB /* PhotoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140C24F253CB009B04EB /* PhotoApp.xcdatamodeld */; };
 		11C2141024F253CF009B04EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C2140F24F253CF009B04EB /* Assets.xcassets */; };
 		11C2141324F253CF009B04EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2141124F253CF009B04EB /* LaunchScreen.storyboard */; };
 		11C2141E24F253D0009B04EB /* PhotoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2141D24F253D0009B04EB /* PhotoAppTests.swift */; };
@@ -41,7 +40,6 @@
 		11C2140524F253CB009B04EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		11C2140724F253CB009B04EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		11C2140A24F253CB009B04EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		11C2140D24F253CB009B04EB /* PhotoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoApp.xcdatamodel; sourceTree = "<group>"; };
 		11C2140F24F253CF009B04EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11C2141224F253CF009B04EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11C2141424F253CF009B04EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,14 +99,8 @@
 		11C2140224F253CB009B04EB /* PhotoApp */ = {
 			isa = PBXGroup;
 			children = (
-				11C2140324F253CB009B04EB /* AppDelegate.swift */,
-				11C2140524F253CB009B04EB /* SceneDelegate.swift */,
-				11C2140724F253CB009B04EB /* ViewController.swift */,
-				11C2140924F253CB009B04EB /* Main.storyboard */,
-				11C2140F24F253CF009B04EB /* Assets.xcassets */,
-				11C2141124F253CF009B04EB /* LaunchScreen.storyboard */,
-				11C2141424F253CF009B04EB /* Info.plist */,
-				11C2140C24F253CB009B04EB /* PhotoApp.xcdatamodeld */,
+				11C2143824F25418009B04EB /* Source */,
+				11C2143624F253ED009B04EB /* Resource */,
 			);
 			path = PhotoApp;
 			sourceTree = "<group>";
@@ -129,6 +121,51 @@
 				11C2142A24F253D0009B04EB /* Info.plist */,
 			);
 			path = PhotoAppUITests;
+			sourceTree = "<group>";
+		};
+		11C2143624F253ED009B04EB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				11C2140F24F253CF009B04EB /* Assets.xcassets */,
+				11C2141424F253CF009B04EB /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		11C2143824F25418009B04EB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				11C2143B24F2544E009B04EB /* Appdelegte */,
+				11C2143A24F25445009B04EB /* View */,
+				11C2143924F2542C009B04EB /* StoryBoard */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		11C2143924F2542C009B04EB /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				11C2141124F253CF009B04EB /* LaunchScreen.storyboard */,
+				11C2140924F253CB009B04EB /* Main.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		11C2143A24F25445009B04EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				11C2140724F253CB009B04EB /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11C2143B24F2544E009B04EB /* Appdelegte */ = {
+			isa = PBXGroup;
+			children = (
+				11C2140324F253CB009B04EB /* AppDelegate.swift */,
+				11C2140524F253CB009B04EB /* SceneDelegate.swift */,
+			);
+			path = Appdelegte;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11C2140E24F253CB009B04EB /* PhotoApp.xcdatamodeld in Sources */,
 				11C2140824F253CB009B04EB /* ViewController.swift in Sources */,
 				11C2140424F253CB009B04EB /* AppDelegate.swift in Sources */,
 				11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */,
@@ -440,7 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74TUC99U3V;
-				INFOPLIST_FILE = PhotoApp/Info.plist;
+				INFOPLIST_FILE = PhotoApp/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,7 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74TUC99U3V;
-				INFOPLIST_FILE = PhotoApp/Info.plist;
+				INFOPLIST_FILE = PhotoApp/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -594,19 +630,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		11C2140C24F253CB009B04EB /* PhotoApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				11C2140D24F253CB009B04EB /* PhotoApp.xcdatamodel */,
-			);
-			currentVersion = 11C2140D24F253CB009B04EB /* PhotoApp.xcdatamodel */;
-			path = PhotoApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 11C213F824F253CB009B04EB /* Project object */;
 }
