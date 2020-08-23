@@ -12,6 +12,7 @@ class SearchViewController: UICollectionViewController {
     
     @IBOutlet weak var searchField: UITextField!
     var listViewModel: SearchModelView?
+    var selectedIndexPath: IndexPath!
 
     
     override func viewDidLoad() {

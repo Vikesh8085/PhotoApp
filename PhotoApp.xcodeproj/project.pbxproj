@@ -28,6 +28,9 @@
 		11C2146524F30672009B04EB /* SearchViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2146424F30672009B04EB /* SearchViewController+Extension.swift */; };
 		11C2146724F312BB009B04EB /* StoryBoard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2146624F312BA009B04EB /* StoryBoard+Extension.swift */; };
 		11C2146A24F312FA009B04EB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2146924F312FA009B04EB /* Constant.swift */; };
+		11C2149B24F31D52009B04EB /* ZoomTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2149824F31D52009B04EB /* ZoomTransitionController.swift */; };
+		11C2149C24F31D52009B04EB /* ZoomDismissalInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2149924F31D52009B04EB /* ZoomDismissalInteractionController.swift */; };
+		11C2149D24F31D52009B04EB /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2149A24F31D52009B04EB /* ZoomAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		11C2146424F30672009B04EB /* SearchViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Extension.swift"; sourceTree = "<group>"; };
 		11C2146624F312BA009B04EB /* StoryBoard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoryBoard+Extension.swift"; sourceTree = "<group>"; };
 		11C2146924F312FA009B04EB /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		11C2149824F31D52009B04EB /* ZoomTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomTransitionController.swift; sourceTree = "<group>"; };
+		11C2149924F31D52009B04EB /* ZoomDismissalInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomDismissalInteractionController.swift; sourceTree = "<group>"; };
+		11C2149A24F31D52009B04EB /* ZoomAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,7 @@
 		11C2143824F25418009B04EB /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				11C2149724F31D52009B04EB /* Animation */,
 				11C2146824F312C8009B04EB /* Constant */,
 				11C2145C24F2FF3D009B04EB /* Operation */,
 				11C2145824F2F5A8009B04EB /* ModelView */,
@@ -277,6 +284,16 @@
 				11C2146924F312FA009B04EB /* Constant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		11C2149724F31D52009B04EB /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				11C2149824F31D52009B04EB /* ZoomTransitionController.swift */,
+				11C2149924F31D52009B04EB /* ZoomDismissalInteractionController.swift */,
+				11C2149A24F31D52009B04EB /* ZoomAnimator.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,10 +436,13 @@
 				11C2144524F25C79009B04EB /* SearchViewController.swift in Sources */,
 				11C2140424F253CB009B04EB /* AppDelegate.swift in Sources */,
 				11C2144324F25913009B04EB /* PhotoCell.swift in Sources */,
+				11C2149C24F31D52009B04EB /* ZoomDismissalInteractionController.swift in Sources */,
 				11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */,
+				11C2149D24F31D52009B04EB /* ZoomAnimator.swift in Sources */,
 				11C2143F24F25570009B04EB /* DetailViewController.swift in Sources */,
 				11C2146724F312BB009B04EB /* StoryBoard+Extension.swift in Sources */,
 				11C2146524F30672009B04EB /* SearchViewController+Extension.swift in Sources */,
+				11C2149B24F31D52009B04EB /* ZoomTransitionController.swift in Sources */,
 				11C2146324F30468009B04EB /* DownloadImageOperation.swift in Sources */,
 				11C2144D24F2E9F9009B04EB /* APIManager.swift in Sources */,
 				11C2144F24F2EA12009B04EB /* NetworkResult.swift in Sources */,
@@ -601,6 +621,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74TUC99U3V;
 				INFOPLIST_FILE = PhotoApp/Resource/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,7 +629,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vik.unitTesting.PhotoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -619,6 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74TUC99U3V;
 				INFOPLIST_FILE = PhotoApp/Resource/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -626,7 +648,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vik.unitTesting.PhotoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

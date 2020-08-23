@@ -85,9 +85,23 @@
                     <view key="view" contentMode="scaleToFill" id="hXq-zf-7tp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oD6-xF-y0t">
+                                <rect key="frame" x="0.0" y="66.5" width="375" height="534"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oD6-xF-y0t" firstAttribute="centerX" secondItem="hXq-zf-7tp" secondAttribute="centerX" id="DOj-Q5-cH3"/>
+                            <constraint firstItem="oD6-xF-y0t" firstAttribute="width" secondItem="hXq-zf-7tp" secondAttribute="width" id="dIV-SO-Pvy"/>
+                            <constraint firstItem="oD6-xF-y0t" firstAttribute="height" secondItem="hXq-zf-7tp" secondAttribute="height" multiplier="0.8" id="jnR-Eo-Rzw"/>
+                            <constraint firstItem="oD6-xF-y0t" firstAttribute="centerY" secondItem="hXq-zf-7tp" secondAttribute="centerY" id="pfD-Tu-val"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Odp-gu-mew"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="oD6-xF-y0t" id="C2k-wT-5cl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dsr-rJ-CJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
