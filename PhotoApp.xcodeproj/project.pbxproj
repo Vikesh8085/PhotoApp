@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		11C2140424F253CB009B04EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140324F253CB009B04EB /* AppDelegate.swift */; };
 		11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140524F253CB009B04EB /* SceneDelegate.swift */; };
-		11C2140824F253CB009B04EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140724F253CB009B04EB /* ViewController.swift */; };
 		11C2140B24F253CB009B04EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2140924F253CB009B04EB /* Main.storyboard */; };
 		11C2141024F253CF009B04EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C2140F24F253CF009B04EB /* Assets.xcassets */; };
 		11C2141324F253CF009B04EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2141124F253CF009B04EB /* LaunchScreen.storyboard */; };
 		11C2141E24F253D0009B04EB /* PhotoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2141D24F253D0009B04EB /* PhotoAppTests.swift */; };
 		11C2142924F253D0009B04EB /* PhotoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2142824F253D0009B04EB /* PhotoAppUITests.swift */; };
+		11C2143F24F25570009B04EB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2143E24F25570009B04EB /* DetailViewController.swift */; };
+		11C2144324F25913009B04EB /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2144224F25913009B04EB /* PhotoCell.swift */; };
+		11C2144524F25C79009B04EB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2144424F25C79009B04EB /* SearchViewController.swift */; };
+		11C2144A24F268D0009B04EB /* UICollectionView+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2144924F268D0009B04EB /* UICollectionView+Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,6 @@
 		11C2140024F253CB009B04EB /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C2140324F253CB009B04EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11C2140524F253CB009B04EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		11C2140724F253CB009B04EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		11C2140A24F253CB009B04EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11C2140F24F253CF009B04EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11C2141224F253CF009B04EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		11C2142424F253D0009B04EB /* PhotoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C2142824F253D0009B04EB /* PhotoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAppUITests.swift; sourceTree = "<group>"; };
 		11C2142A24F253D0009B04EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11C2143E24F25570009B04EB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		11C2144224F25913009B04EB /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		11C2144424F25C79009B04EB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		11C2144924F268D0009B04EB /* UICollectionView+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Cell.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +160,9 @@
 		11C2143A24F25445009B04EB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				11C2140724F253CB009B04EB /* ViewController.swift */,
+				11C2144624F26854009B04EB /* Extension */,
+				11C2144124F258F2009B04EB /* Cell */,
+				11C2144024F258E4009B04EB /* Controller */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +174,31 @@
 				11C2140524F253CB009B04EB /* SceneDelegate.swift */,
 			);
 			path = Appdelegte;
+			sourceTree = "<group>";
+		};
+		11C2144024F258E4009B04EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				11C2143E24F25570009B04EB /* DetailViewController.swift */,
+				11C2144424F25C79009B04EB /* SearchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		11C2144124F258F2009B04EB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				11C2144224F25913009B04EB /* PhotoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		11C2144624F26854009B04EB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				11C2144924F268D0009B04EB /* UICollectionView+Cell.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,9 +332,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11C2140824F253CB009B04EB /* ViewController.swift in Sources */,
+				11C2144A24F268D0009B04EB /* UICollectionView+Cell.swift in Sources */,
+				11C2144524F25C79009B04EB /* SearchViewController.swift in Sources */,
 				11C2140424F253CB009B04EB /* AppDelegate.swift in Sources */,
+				11C2144324F25913009B04EB /* PhotoCell.swift in Sources */,
 				11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */,
+				11C2143F24F25570009B04EB /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
