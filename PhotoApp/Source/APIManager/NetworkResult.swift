@@ -9,7 +9,7 @@
 import Foundation
 
 enum NetworkResult {
-    case success([FlickerPhoto])
+    case success([FlickerPhoto], PaginnationHelper)
     case failure(statusCode: HTTPStatusCodes, title: String, subTitle: String)
 }
 

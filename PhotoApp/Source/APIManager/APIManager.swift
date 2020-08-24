@@ -11,19 +11,20 @@ final class APIManager {
 
     static let shared = APIManager()
     
-    let urlEndPoint = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=de24642a8668fb0318ec5b9cecfda18c&text=apple&per_page=20&format=json&nojsoncallback=1&page=1"
-   
-    
-    func getPhotos(completionHandler: @escaping (NetworkResult) -> Void) {
+    func getPhotos(query: String, pageNo: Int, completionHandler: @escaping (NetworkResult) -> Void) {
        
-         URLSession.shared.dataTask(with: URL(string: urlEndPoint)!) { (data, response, error) in
+        guard let link = getUrl(query, page: pageNo) else {return}
+            
+         URLSession.shared.dataTask(with: link) { (data, response, error) in
             if let statusCode = (response as? HTTPURLResponse)?.statusCode,
                 let httpStatusCode = HTTPStatusCodes(rawValue: statusCode) {
                 switch httpStatusCode {
                 case HTTPStatusCodes.success:
                     if let d = data, let obj = try? JSONDecoder().decode(FlickerPhotoDict.self, from: d) {
                         if obj.stat == "ok" {
-                            completionHandler(NetworkResult.success(obj.photos.photo))
+                            
+                            let page = PaginnationHelper(totalPages: obj.photos.pages, total: Int32(obj.photos.total) ?? 0, currentPage: obj.photos.page)
+                            completionHandler(NetworkResult.success(obj.photos.photo, page))
                         }
                     }
                 case HTTPStatusCodes.tooManyRequests:
@@ -37,5 +38,14 @@ final class APIManager {
         }.resume()
     }
     
+    fileprivate func getUrl(_ query:String, page: Int = 1) -> URL? {
+        
+        let URLString = "\(APIManagerConstant.baseUrl)/services/rest/?method=flickr.photos.search&api_key=\(APIManagerConstant.key)&text=\(query)&per_page=\(APIManagerConstant.perPageElement)&format=json&nojsoncallback=1&page=\(page)"
+        
+        guard let url = URL(string:URLString) else {
+            return nil
+        }
+        return url
+    }
     
 }

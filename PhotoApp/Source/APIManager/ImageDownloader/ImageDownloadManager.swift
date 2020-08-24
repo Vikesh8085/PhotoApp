@@ -57,6 +57,15 @@ final class ImageDownloadManager {
             }
         }
     }
-    
-    
+    func slowDownImageDownloadTaskfor(_ flickrPhoto: FlickerPhoto) {
+        guard let url = flickrPhoto.flickrImageURL() else {
+            return
+        }
+        if let operations = (imageDownloadQueue.operations as? [DownloadImageOperation])?.filter({$0.imageUrl.absoluteString == url.absoluteString && $0.isFinished == false && $0.isExecuting == true }), let operation = operations.first {
+            operation.queuePriority = .low
+        }
+    }
+    func cancelPrevivousOperation() {
+        imageDownloadQueue.cancelAllOperations()
+    }
 }

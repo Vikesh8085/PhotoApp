@@ -25,11 +25,54 @@ extension SearchViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if self.listViewModel?.isLoadMore ?? false {
+            return CGSize.zero
+        }
+        return CGSize(width: collectionView.bounds.size.width, height: 55)
+    }
 
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+          if kind == UICollectionView.elementKindSectionFooter {
+              let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerViewReuseIdentifier, for: indexPath) as! CustomFooterView
+              self.footerView = aFooterView
+              self.footerView?.backgroundColor = UIColor.clear
+              return aFooterView
+          } else {
+              let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerViewReuseIdentifier, for: indexPath)
+              return headerView
+          }
+      }
+      
+      override func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+          if elementKind == UICollectionView.elementKindSectionFooter {
+              self.footerView?.prepareInitialAnimation()
+          }
+      }
+      override func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+          if elementKind == UICollectionView.elementKindSectionFooter {
+              self.footerView?.stopAnimate()
+          }
+      }
+    
     
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let lastRowIndex = collectionView.numberOfItems(inSection: 0) - 1
+        if indexPath.row == lastRowIndex && self.listViewModel?.paging != nil {
+            loadMore()
+        }
         
         guard let model = self.listViewModel?.flickerPhotos?[indexPath.row] else { return }
 
@@ -49,6 +92,7 @@ extension SearchViewController {
         self.selectedIndexPath = indexPath
         let cell = collectionView.cellForItem(at: indexPath)
         let nav = self.navigationController
+     //
         guard let model = self.listViewModel?.flickerPhotos?[indexPath.row] else { return }
         
         let vc = DetailViewController.instantiate()
@@ -59,8 +103,64 @@ extension SearchViewController {
         nav?.pushViewController(vc, animated: true)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        /* Reduce the priority of the network operation in case the user scrolls and an image is no longer visible. */
+        if self.listViewModel?.isLoadMore ?? false {return}
+        guard let flickrPhoto = self.listViewModel?.flickerPhotos?[indexPath.row] else { return }
+        ImageDownloadManager.shared.slowDownImageDownloadTaskfor(flickrPhoto)
+    }
+    
+    //compute the scroll value and play witht the threshold to get desired effect
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let threshold   = 100.0 ;
+        let contentOffset = scrollView.contentOffset.y;
+        let contentHeight = scrollView.contentSize.height;
+        let diffHeight = contentHeight - contentOffset;
+        let frameHeight = scrollView.bounds.size.height;
+        var triggerThreshold  = Float((diffHeight - frameHeight))/Float(threshold);
+        triggerThreshold   =  min(triggerThreshold, 0.0)
+        let pullRatio  = min(fabs(triggerThreshold),1.0);
+        self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio))
+        if pullRatio >= 1 {
+            self.footerView?.animateFinal()
+        }
+        print("pullRatio:\(pullRatio)")
+    }
+       
+       //compute the offset and call the load method
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let contentOffset = scrollView.contentOffset.y;
+        let contentHeight = scrollView.contentSize.height;
+        let diffHeight = contentHeight - contentOffset;
+        let frameHeight = scrollView.bounds.size.height;
+        let pullHeight  = fabs(diffHeight - frameHeight);
+        print("pullHeight:\(pullHeight)");
+        if pullHeight == 0.0
+        {
+            if (self.footerView?.isAnimatingFinal)! {
+                print("load more trigger")
+                self.footerView?.startAnimate()
+            }
+        }
+    }
+    
     
 }
+// MARK: UICollectionViewDelegateFlowLayout
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    // responsible for telling the layout the size of a given cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // here you work out the total amount of space taken up by padding
+        // there will be n + 1 evenly sized spaces, where n is the number of items in the row
+        // the space size can be taken from the left section inset
+        // subtracting this from the view's width and dividing by the number of items in a row gives you the width for each item
+        let paddingSpace = sectionInsets.left * (photoPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / photoPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+}
+
 
 
 extension SearchViewController: ZoomAnimatorDelegate {
