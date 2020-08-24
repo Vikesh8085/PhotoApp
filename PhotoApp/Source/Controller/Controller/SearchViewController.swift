@@ -83,8 +83,8 @@ extension SearchViewController: UITextFieldDelegate {
         guard let query = textField.text, !query.isEmpty else {
             ImageDownloadManager.shared.cancelPrevivousOperation()
             self.listViewModel?.flickerPhotos?.removeAll()
-            self.collectionView?.reloadData()
             self.listViewModel?.isLoadMore = false
+            self.collectionView?.reloadData()
             return true
         }
         self.fetchData(query: query, pageNo: 1)

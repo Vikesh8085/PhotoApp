@@ -17,6 +17,7 @@ class SearchModelView {
     // MARK: - Properties Initializer
     var flickerPhotos: [FlickerPhoto]?
     public var completionHandler: ((Bool, Error?) -> (Void))?
+
     var searchViewController: SearchViewController?
 
     init(searchViewController: SearchViewController) {
@@ -62,10 +63,14 @@ class SearchModelView {
         if paging.currentPage == 1 {
             ImageDownloadManager.shared.cancelPrevivousOperation()
             self.flickerPhotos?.removeAll()
+            DispatchQueue.main.async {
+                self.searchViewController?.collectionView?.reloadData()
+            }
         }
         
         self.paging = paging
         paging.currentPage == 1 ? self.flickerPhotos = data : self.flickerPhotos?.append(contentsOf: data)
+        
         if let completion = self.completionHandler {
             completion(true,nil)
         }

@@ -77,12 +77,12 @@ extension SearchViewController {
         
         guard let model = self.listViewModel?.flickerPhotos?[indexPath.row] else { return }
 
-        (cell as! PhotoCell).imageView123.image = #imageLiteral(resourceName: "placeholder")
+        (cell as! PhotoCell).imageView.image = #imageLiteral(resourceName: "placeholder")
         ImageDownloadManager.shared.downloadPhoto(model, indexPath: indexPath) { (image, url, indexPathh, error) in
             if let indexPathNew = indexPathh {
                 DispatchQueue.main.async {
                     if let cell = collectionView.cellForItem(at: indexPathNew) as? PhotoCell {
-                        cell.imageView123.image = image
+                        cell.imageView.image = image
                     }
                 }
             }
@@ -98,13 +98,13 @@ extension SearchViewController {
         nav?.delegate = vc.transitionController
         vc.transitionController.fromDelegate = self
         vc.transitionController.toDelegate = vc
-        vc.photos = (cell as! PhotoCell).imageView123.image
+        vc.photos = (cell as! PhotoCell).imageView.image
         nav?.pushViewController(vc, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         /* Reduce the priority of the network operation in case the user scrolls and an image is no longer visible. */
-        if self.listViewModel?.isLoadMore ?? false {return}
+        if self.listViewModel?.isLoadMore ?? true {return}
         guard let flickrPhoto = self.listViewModel?.flickerPhotos?[indexPath.row] else { return }
         ImageDownloadManager.shared.slowDownImageDownloadTaskfor(flickrPhoto)
     }
