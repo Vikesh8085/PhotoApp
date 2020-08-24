@@ -92,8 +92,6 @@ extension SearchViewController {
         self.selectedIndexPath = indexPath
         let cell = collectionView.cellForItem(at: indexPath)
         let nav = self.navigationController
-     //
-        guard let model = self.listViewModel?.flickerPhotos?[indexPath.row] else { return }
         
         let vc = DetailViewController.instantiate()
         nav?.delegate = vc.transitionController
@@ -124,7 +122,6 @@ extension SearchViewController {
         if pullRatio >= 1 {
             self.footerView?.animateFinal()
         }
-        print("pullRatio:\(pullRatio)")
     }
        
        //compute the offset and call the load method

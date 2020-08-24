@@ -42,7 +42,6 @@ final class ImageDownloadManager {
                 operation.queuePriority = .veryHigh
             }else {
                 /* create a new task to download the image.  */
-                print("Create a new task for \(url)")
                 let operation = DownloadImageOperation(url: url, indexPath: indexPath)
                 if indexPath == nil {
                     operation.queuePriority = .high

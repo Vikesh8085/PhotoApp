@@ -22,6 +22,7 @@ class SearchViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.listViewModel = SearchModelView(searchViewController: self)
         manageUI()
     }
     
@@ -32,7 +33,6 @@ class SearchViewController: UICollectionViewController {
     }
     
     private func fetchData(query: String, pageNo: Int) {
-        self.listViewModel = SearchModelView(searchViewController: self)
         if let viewModel = self.listViewModel {
             viewModel.completionHandler = { (success, error) in
                 if success {

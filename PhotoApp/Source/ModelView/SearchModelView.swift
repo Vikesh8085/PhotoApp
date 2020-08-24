@@ -30,14 +30,18 @@ class SearchModelView {
             APIManager.shared.getPhotos(query: query, pageNo: pageNo) { (result) in
                 switch result {
                 case let  .failure(_, title, subTitle):
-                    self.showError(title: title, message: subTitle)
                     if let completion = self.completionHandler {
                         completion(false,nil)
+                        DispatchQueue.main.async {
+                            self.showError(title: title, message: subTitle)
+                        }
                     }
                 case let .success(photo, page):
                     self.handleData(data: photo,paging: page)
                 }
-                self.searchViewController?.view.hideIndicator()
+                DispatchQueue.main.async {
+                    self.searchViewController?.view.hideIndicator()
+                }
             }
         } else {
             self.searchViewController?.showAlert(title: InternetAvailability.title.rawValue, message: InternetAvailability.message.rawValue, preferredStyle: .alert, alertActions: [(AlertAction.retryAction.rawValue, .default)]) { (index) in
@@ -54,6 +58,12 @@ class SearchModelView {
     }
     
     private func handleData(data: [FlickerPhoto], paging: PaginnationHelper) {
+        
+        if paging.currentPage == 1 {
+            ImageDownloadManager.shared.cancelPrevivousOperation()
+            self.flickerPhotos?.removeAll()
+        }
+        
         self.paging = paging
         paging.currentPage == 1 ? self.flickerPhotos = data : self.flickerPhotos?.append(contentsOf: data)
         if let completion = self.completionHandler {

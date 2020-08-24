@@ -13,7 +13,7 @@ extension UIView {
         self.hideIndicator()
         let activityView = UIActivityIndicatorView(frame: self.frame ) as UIActivityIndicatorView
         activityView.center = self.center
-        activityView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        activityView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.25)
         activityView.color = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         activityView.hidesWhenStopped = true
         activityView.style = .large
