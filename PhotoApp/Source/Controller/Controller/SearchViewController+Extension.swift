@@ -70,18 +70,19 @@ extension SearchViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         let lastRowIndex = collectionView.numberOfItems(inSection: 0) - 1
+        print(indexPath)
         if indexPath.row == lastRowIndex && self.listViewModel?.paging != nil {
             loadMore()
         }
         
         guard let model = self.listViewModel?.flickerPhotos?[indexPath.row] else { return }
 
-        (cell as! PhotoCell).imageView.image = #imageLiteral(resourceName: "placeholder")
+        (cell as! PhotoCell).imageView123.image = #imageLiteral(resourceName: "placeholder")
         ImageDownloadManager.shared.downloadPhoto(model, indexPath: indexPath) { (image, url, indexPathh, error) in
             if let indexPathNew = indexPathh {
                 DispatchQueue.main.async {
                     if let cell = collectionView.cellForItem(at: indexPathNew) as? PhotoCell {
-                        cell.imageView.image = image
+                        cell.imageView123.image = image
                     }
                 }
             }
@@ -97,7 +98,7 @@ extension SearchViewController {
         nav?.delegate = vc.transitionController
         vc.transitionController.fromDelegate = self
         vc.transitionController.toDelegate = vc
-        vc.photos = (cell as! PhotoCell).imageView.image
+        vc.photos = (cell as! PhotoCell).imageView123.image
         nav?.pushViewController(vc, animated: true)
     }
     
@@ -117,7 +118,7 @@ extension SearchViewController {
         let frameHeight = scrollView.bounds.size.height;
         var triggerThreshold  = Float((diffHeight - frameHeight))/Float(threshold);
         triggerThreshold   =  min(triggerThreshold, 0.0)
-        let pullRatio  = min(fabs(triggerThreshold),1.0);
+        let pullRatio  = min(abs(triggerThreshold),1.0);
         self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio))
         if pullRatio >= 1 {
             self.footerView?.animateFinal()
@@ -130,7 +131,7 @@ extension SearchViewController {
         let contentHeight = scrollView.contentSize.height;
         let diffHeight = contentHeight - contentOffset;
         let frameHeight = scrollView.bounds.size.height;
-        let pullHeight  = fabs(diffHeight - frameHeight);
+        let pullHeight  = abs(diffHeight - frameHeight);
         print("pullHeight:\(pullHeight)");
         if pullHeight == 0.0
         {
