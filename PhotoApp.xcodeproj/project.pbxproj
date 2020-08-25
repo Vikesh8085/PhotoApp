@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11ADB0CA24F5623000A09076 /* ReachabilityWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADB0C924F5623000A09076 /* ReachabilityWrapper.swift */; };
 		11C2140424F253CB009B04EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140324F253CB009B04EB /* AppDelegate.swift */; };
 		11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140524F253CB009B04EB /* SceneDelegate.swift */; };
 		11C2140B24F253CB009B04EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2140924F253CB009B04EB /* Main.storyboard */; };
@@ -35,7 +36,6 @@
 		11C214A324F3338D009B04EB /* CustomFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C214A124F3338D009B04EB /* CustomFooterView.swift */; };
 		11C214A424F3338D009B04EB /* CustomFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C214A224F3338D009B04EB /* CustomFooterView.xib */; };
 		11C214A624F3353F009B04EB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C214A524F3353F009B04EB /* UIViewController+Extension.swift */; };
-		11C214A924F34041009B04EB /* ReachabilityWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C214A824F34040009B04EB /* ReachabilityWrapper.swift */; };
 		11C214AC24F34374009B04EB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C214AB24F34374009B04EB /* UIView+Extension.swift */; };
 		AF237C76129E390CF89EABF3 /* Pods_PhotoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68299512F5DFB6187DFE6764 /* Pods_PhotoAppTests.framework */; };
 		BBA88A826809B5562CD9E61D /* Pods_PhotoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDAC9F61C4FDACB7085E6846 /* Pods_PhotoApp.framework */; };
@@ -60,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11ADB0C924F5623000A09076 /* ReachabilityWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityWrapper.swift; sourceTree = "<group>"; };
 		11C2140024F253CB009B04EB /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C2140324F253CB009B04EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11C2140524F253CB009B04EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		11C214A124F3338D009B04EB /* CustomFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFooterView.swift; sourceTree = "<group>"; };
 		11C214A224F3338D009B04EB /* CustomFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooterView.xib; sourceTree = "<group>"; };
 		11C214A524F3353F009B04EB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		11C214A824F34040009B04EB /* ReachabilityWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityWrapper.swift; sourceTree = "<group>"; };
 		11C214AB24F34374009B04EB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		45D7DE28D21E360DF8B005AF /* Pods-PhotoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoApp.release.xcconfig"; path = "Target Support Files/Pods-PhotoApp/Pods-PhotoApp.release.xcconfig"; sourceTree = "<group>"; };
 		68299512F5DFB6187DFE6764 /* Pods_PhotoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +146,14 @@
 				8200AC6F29EE29A23AFCA66A /* Pods-PhotoAppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		11ADB0C824F5620E00A09076 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				11ADB0C924F5623000A09076 /* ReachabilityWrapper.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		11C213F724F253CB009B04EB = {
@@ -209,8 +217,8 @@
 		11C2143824F25418009B04EB /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				11ADB0C824F5620E00A09076 /* Utility */,
 				11C2144024F258E4009B04EB /* Controller */,
-				11C214A724F34040009B04EB /* Utilities */,
 				11C2149724F31D52009B04EB /* Animation */,
 				11C2146824F312C8009B04EB /* Constant */,
 				11C2145C24F2FF3D009B04EB /* Operation */,
@@ -351,15 +359,6 @@
 				11C214A224F3338D009B04EB /* CustomFooterView.xib */,
 			);
 			path = CustomFooter;
-			sourceTree = "<group>";
-		};
-		11C214A724F34040009B04EB /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				11C214A824F34040009B04EB /* ReachabilityWrapper.swift */,
-			);
-			name = Utilities;
-			path = ../../../CavistaCode/CavistaCode/Utilities;
 			sourceTree = "<group>";
 		};
 		A40A12132140474FC9C79861 /* Frameworks */ = {
@@ -625,8 +624,8 @@
 				11C2149C24F31D52009B04EB /* ZoomDismissalInteractionController.swift in Sources */,
 				11C2149F24F324C1009B04EB /* PaginnationHelper.swift in Sources */,
 				11C214A624F3353F009B04EB /* UIViewController+Extension.swift in Sources */,
-				11C214A924F34041009B04EB /* ReachabilityWrapper.swift in Sources */,
 				11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */,
+				11ADB0CA24F5623000A09076 /* ReachabilityWrapper.swift in Sources */,
 				11C2149D24F31D52009B04EB /* ZoomAnimator.swift in Sources */,
 				11C2143F24F25570009B04EB /* DetailViewController.swift in Sources */,
 				11C2146724F312BB009B04EB /* StoryBoard+Extension.swift in Sources */,
