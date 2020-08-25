@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11ADB0CA24F5623000A09076 /* ReachabilityWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADB0C924F5623000A09076 /* ReachabilityWrapper.swift */; };
+		11ADB0CD24F5643F00A09076 /* ReachabilityWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADB0CC24F5643F00A09076 /* ReachabilityWrapper.swift */; };
 		11C2140424F253CB009B04EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140324F253CB009B04EB /* AppDelegate.swift */; };
 		11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2140524F253CB009B04EB /* SceneDelegate.swift */; };
 		11C2140B24F253CB009B04EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11C2140924F253CB009B04EB /* Main.storyboard */; };
@@ -60,7 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11ADB0C924F5623000A09076 /* ReachabilityWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityWrapper.swift; sourceTree = "<group>"; };
+		11ADB0CC24F5643F00A09076 /* ReachabilityWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityWrapper.swift; sourceTree = "<group>"; };
 		11C2140024F253CB009B04EB /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C2140324F253CB009B04EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11C2140524F253CB009B04EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,10 +148,10 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		11ADB0C824F5620E00A09076 /* Utility */ = {
+		11ADB0CB24F5641800A09076 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				11ADB0C924F5623000A09076 /* ReachabilityWrapper.swift */,
+				11ADB0CC24F5643F00A09076 /* ReachabilityWrapper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -217,7 +217,7 @@
 		11C2143824F25418009B04EB /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				11ADB0C824F5620E00A09076 /* Utility */,
+				11ADB0CB24F5641800A09076 /* Utility */,
 				11C2144024F258E4009B04EB /* Controller */,
 				11C2149724F31D52009B04EB /* Animation */,
 				11C2146824F312C8009B04EB /* Constant */,
@@ -625,7 +625,7 @@
 				11C2149F24F324C1009B04EB /* PaginnationHelper.swift in Sources */,
 				11C214A624F3353F009B04EB /* UIViewController+Extension.swift in Sources */,
 				11C2140624F253CB009B04EB /* SceneDelegate.swift in Sources */,
-				11ADB0CA24F5623000A09076 /* ReachabilityWrapper.swift in Sources */,
+				11ADB0CD24F5643F00A09076 /* ReachabilityWrapper.swift in Sources */,
 				11C2149D24F31D52009B04EB /* ZoomAnimator.swift in Sources */,
 				11C2143F24F25570009B04EB /* DetailViewController.swift in Sources */,
 				11C2146724F312BB009B04EB /* StoryBoard+Extension.swift in Sources */,
